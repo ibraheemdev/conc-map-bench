@@ -19,6 +19,7 @@ parking_lot = "0.12.1"
 evmap = "10.0.2"
 seize = "0.2.5"
 crossbeam-skiplist = { git = "https://github.com/crossbeam-rs/crossbeam" }
+papaya = { git = "https://github.com/ibraheemdev/papaya" }
 structopt = "0.3.26"
 json = "0.12.4"
 csv = "1.2.2"

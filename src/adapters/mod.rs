@@ -3,8 +3,10 @@ pub use self::{
     chashmap::CHashMapTable, contrie::ContrieTable, crossbeam_skiplist::CrossbeamSkipMapTable,
     dashmap::DashMapTable, evmap::EvmapTable, flurry::FlurryTable,
     std::ParkingLotRwLockStdHashMapTable, std::StdRwLockStdHashMapTable,
+    papaya::PapayaTable
 };
 
+mod papaya;
 mod btreemap;
 mod chashmap;
 mod contrie;

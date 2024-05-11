@@ -1,6 +1,6 @@
-use std::iter;
 use std::collections::hash_map::RandomState;
 use std::hash::BuildHasher;
+use std::iter;
 use std::{fmt::Debug, io, thread::sleep, time::Duration};
 
 use bustle::*;
@@ -75,8 +75,12 @@ where
 
         match n {
             0..=8 => (1..=n as u32).collect(),
-            9..=16 => iter::once(1).chain((0..=n as u32).step_by(2).skip(1)).collect(),
-            _ => iter::once(1).chain((0..=n as u32).step_by(4).skip(1)).collect(),
+            9..=16 => iter::once(1)
+                .chain((0..=n as u32).step_by(2).skip(1))
+                .collect(),
+            _ => iter::once(1)
+                .chain((0..=n as u32).step_by(4).skip(1))
+                .collect(),
         }
     };
 
@@ -95,10 +99,10 @@ where
 }
 
 fn run(options: &Options, h: &mut Handler) {
-    //case::<StdRwLockBTreeMapTable<u64>>("std:sync::RwLock<BTreeMap>", options, h);
-    //case::<ParkingLotRwLockBTreeMapTable<u64>>("parking_lot::RwLock<BTreeMap>", options, h);
-    case::<CHashMapTable<u64>>("CHashMap", options, h);
-    case::<CrossbeamSkipMapTable<u64>>("CrossbeamSkipMap", options, h);
+    // case::<StdRwLockBTreeMapTable<u64>>("std:sync::RwLock<BTreeMap>", options, h);
+    // case::<ParkingLotRwLockBTreeMapTable<u64>>("parking_lot::RwLock<BTreeMap>", options, h);
+    // case::<CHashMapTable<u64>>("CHashMap", options, h);
+    // case::<CrossbeamSkipMapTable<u64>>("CrossbeamSkipMap", options, h);
 
     match options.hasher {
         HasherKind::Std => run_hasher_variant::<RandomState>(options, h),
@@ -110,8 +114,9 @@ fn run_hasher_variant<H>(options: &Options, h: &mut Handler)
 where
     H: Default + Clone + Send + Sync + BuildHasher + 'static,
 {
-    //case::<StdRwLockStdHashMapTable<u64, H>>("std::sync::RwLock<StdHashMap>", options, h);
-    //case::<ParkingLotRwLockStdHashMapTable<u64, H>>("parking_lot::RwLock<StdHashMap>", options, h);
+    // case::<StdRwLockStdHashMapTable<u64, H>>("std::sync::RwLock<StdHashMap>", options, h);
+    // case::<ParkingLotRwLockStdHashMapTable<u64, H>>("parking_lot::RwLock<StdHashMap>", options, h);
+    case::<PapayaTable<u64, H>>("Papaya", options, h);
     case::<DashMapTable<u64, H>>("DashMap", options, h);
     case::<FlurryTable<u64, H>>("Flurry", options, h);
     case::<EvmapTable<u64, H>>("Evmap", options, h);
