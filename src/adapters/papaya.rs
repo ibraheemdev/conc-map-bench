@@ -17,6 +17,11 @@ where
             papaya::HashMap::builder()
                 .capacity(capacity)
                 .hasher(H::default())
+                .collector(
+                    papaya::Collector::new()
+                        .epoch_frequency(None)
+                        .batch_size(2000),
+                )
                 .resize_mode(papaya::ResizeMode::Blocking)
                 .build(),
         ))

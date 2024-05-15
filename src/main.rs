@@ -8,6 +8,9 @@ mod plot;
 mod record;
 mod workloads;
 
+#[global_allocator]
+static GLOBAL: mimalloc::MiMalloc = mimalloc::MiMalloc;
+
 #[derive(Debug, StructOpt)]
 enum Options {
     Bench(bench::Options),

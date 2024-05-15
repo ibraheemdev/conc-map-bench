@@ -1,0 +1,21 @@
+[package]
+name = "papaya"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+atomic-wait = "1.1.0"
+seize = { git = "https://github.com/ibraheemdev/seize", branch = "reclaim-all" }
+
+[dev-dependencies]
+rand = "0.8.5"
+dashmap = "5.5.3"
+criterion = "0.5.1"
+
+[[bench]]
+name = "compare"
+harness = false
+
+[[bench]]
+name = "misc"
+harness = false

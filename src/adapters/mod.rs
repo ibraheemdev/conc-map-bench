@@ -1,19 +1,13 @@
-pub use self::{
-    btreemap::ParkingLotRwLockBTreeMapTable, btreemap::StdRwLockBTreeMapTable,
-    chashmap::CHashMapTable, contrie::ContrieTable, crossbeam_skiplist::CrossbeamSkipMapTable,
-    dashmap::DashMapTable, evmap::EvmapTable, flurry::FlurryTable,
-    std::ParkingLotRwLockStdHashMapTable, std::StdRwLockStdHashMapTable,
-    papaya::PapayaTable
-};
+pub use self::{dashmap::DashMapTable, flurry::FlurryTable, papaya::PapayaTable};
 
-mod papaya;
-mod btreemap;
-mod chashmap;
-mod contrie;
-mod crossbeam_skiplist;
 mod dashmap;
-mod evmap;
 mod flurry;
-mod std;
+mod papaya;
+// mod std;
+// mod btreemap;
+// mod chashmap;
+// mod contrie;
+// mod crossbeam_skiplist;
+// mod evmap;
 
 type Value = u32;
